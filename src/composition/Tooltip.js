@@ -1,6 +1,7 @@
 import React from 'react';
 import './Tooltip.css';
 
+/* Tooltip without a Class
 function Tooltip(props) {
     return (
         <span className='Tooltip'>
@@ -16,6 +17,7 @@ function Tooltip(props) {
         </span>
     );
 }
+*/
 
 class TooltipClass extends React.Component {
     static defaultProps = {
