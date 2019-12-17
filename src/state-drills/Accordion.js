@@ -5,17 +5,6 @@ class Accordion extends React.Component {
     static defaultProps = {sections: []};
     state = {activeSection: null};
 
-    renderContent (index) {
-        if (index === this.state.activeSection) {
-            return (
-                <p>
-                    {this.props.sections[index].content}
-                </p>
-            )
-        }
-        return;
-    }
-
     handleClick (index) {
         this.setState({activeSection: index})
     }
@@ -26,7 +15,7 @@ class Accordion extends React.Component {
                 <button onClick={() => this.handleClick(index)}>
                     {section.title}
                 </button>
-                {this.renderContent(index)}
+                {this.state.activeSection === index && <p>{section.content}</p>}
             </li>
         ))
     }
