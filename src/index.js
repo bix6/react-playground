@@ -5,10 +5,18 @@ import './index.css';
 // import HelloWorld from './state-drills/HelloWorld';
 // import Bomb from './state-drills/Bomb';
 // import RouletteGun from './state-drills/RouletteGun';
-import DemonymApp from './demonymapp/demonymApp';
+// import DemonymApp from './demonymapp/demonymApp';
+import { BrowserRouter } from "react-router-dom";
+import App from './paltrows-power-toes/App';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<HelloWorld />, document.getElementById('root'));
 // ReactDOM.render(<Bomb />, document.getElementById('root'));
 // ReactDOM.render(<RouletteGun bulletInChamber={8} />, document.getElementById('root'));
-ReactDOM.render(<DemonymApp />, document.getElementById('root'));
+// ReactDOM.render(<DemonymApp />, document.getElementById('root'));
+ReactDOM.render(
+    <BrowserRouter>
+        <App />
+    </BrowserRouter>,
+    document.getElementById('root')
+);
