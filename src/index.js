@@ -6,17 +6,24 @@ import './index.css';
 // import Bomb from './state-drills/Bomb';
 // import RouletteGun from './state-drills/RouletteGun';
 // import DemonymApp from './demonymapp/demonymApp';
-import { BrowserRouter } from "react-router-dom";
-import App from './paltrows-power-toes/App';
+// import { BrowserRouter } from "react-router-dom";
+// import App from './paltrows-power-toes/App';
+import AppLang from './lang-context/AppLang';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<HelloWorld />, document.getElementById('root'));
 // ReactDOM.render(<Bomb />, document.getElementById('root'));
 // ReactDOM.render(<RouletteGun bulletInChamber={8} />, document.getElementById('root'));
 // ReactDOM.render(<DemonymApp />, document.getElementById('root'));
+/*
 ReactDOM.render(
     <BrowserRouter>
         <App />
     </BrowserRouter>,
+    document.getElementById('root')
+);
+*/
+ReactDOM.render(
+    <AppLang />,
     document.getElementById('root')
 );
