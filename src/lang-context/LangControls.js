@@ -5,8 +5,6 @@ export default function LangControls(props) {
     return (
         <LanguageContext.Consumer>
             {(value) => {
-                console.log(value);
-                console.log(value.contextValue);
                 return (
                     <>
                         <button
@@ -18,7 +16,7 @@ export default function LangControls(props) {
                         {' '}
                         <button
                             onClick={() => props.onSetLang('en-US')}
-                            disabled={value.contextValue.lang === 'en-US'}>
+                            disabled={value.lang === 'en-US'}>
                             American{' '}
                             <span role="img" aria-label="en-US">US</span>
                         </button>
