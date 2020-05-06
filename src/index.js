@@ -8,7 +8,8 @@ import './index.css';
 // import DemonymApp from './demonymapp/demonymApp';
 // import { BrowserRouter } from "react-router-dom";
 // import App from './paltrows-power-toes/App';
-import AppLang from './lang-context/AppLang';
+// import AppLang from './lang-context/AppLang';
+import RegistrationForm from './registrationForm/registrationForm';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<HelloWorld />, document.getElementById('root'));
@@ -24,6 +25,6 @@ ReactDOM.render(
 );
 */
 ReactDOM.render(
-    <AppLang />,
+    <RegistrationForm />,
     document.getElementById('root')
 );
