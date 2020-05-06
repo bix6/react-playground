@@ -1,15 +1,78 @@
 import React from 'react';
+import ValidationError from './ValidationError';
 
 class RegistrationForm extends React.Component {
     constructor(props) {
         super(props);
-        this.nameInput = React.createRef();
+        this.state = {
+            name: {
+                value: '',
+                touched: false
+            },
+            password: {
+                value: '',
+                touched: false
+            },
+            repeatPassword: {
+                value: '',
+                touched: false
+            }
+        };
     }
 
+    updateName(name) {
+        this.setState({ name: { value: name, touched: true } });
+    }
+
+    updatePassword(password) {
+        this.setState({ password: { value: password, touched: true } });
+    }
+
+    updateRepeatPassword(repeatPassword) {
+        this.setState({ repeatPassword: { value: repeatPassword, touched: true } });
+    }
+
+    validateName() {
+        const name = this.state.name.value.trim();
+
+        if (name.length === 0) {
+            return 'Name is required';
+        }
+        else if (name.length < 3) {
+            return 'Name must be at least 3 characters long';
+        }
+    }
+
+    validatePassword() {
+        const password = this.state.password.value.trim();
+
+        if (password.length === 0) {
+            return 'Password is required';
+        }
+        else if (password.length < 6 || password.length > 72) {
+            return 'Password must be between 6 and 72 characters';
+        }
+        else if (!password.match(/[0-9]/)) {
+            return 'Password must contain at least one number';
+        }
+
+    }
+
+    validateRepeatPassword() {
+        const repeatPassword = this.state.repeatPassword.value.trim();
+        const password = this.state.password.value.trim();
+
+        if (repeatPassword !== password) {
+            return 'Passwords do not match';
+        }
+    }
     handleSubmit(e) {
         e.preventDefault();
-        const name = this.nameInput.current.value;
-        console.log ('Name', name);
+        const { name, password, repeatPassword } = this.state;
+
+        console.log('Name: ', name);
+        console.log('Password: ', password);
+        console.log('Repeat Password: ', repeatPassword);
     }
 
     render() {
@@ -22,26 +85,45 @@ class RegistrationForm extends React.Component {
                 <div className="form-group">
                     <label htmlFor="name">Name *</label>
                     <input type="text" className="registration__control" 
-                        name="name" id="name" ref={this.nameInput}
-                        defaultValue="Frank"/>
+                        name="name" id="name" 
+                        onChange={ e => { this.updateName(e.target.value) } } />
+                    { this.state.name.touched && (
+                        <ValidationError message={ this.validateName() } />
+                    )} 
                 </div>
                 <div className="form-group">
                     <label htmlFor="password">Password *</label>
                     <input type="password" className="registration__control"
-                        name="password" id="password" />
+                        name="password" id="password" 
+                        onChange={ e => { this.updatePassword(e.target.value) } } />
                     <div className="registration__hint">6 to 72 chars, must include a #</div>
+                    { this.state.password.touched && (
+                        <ValidationError message={ this.validatePassword() } />
+                    )}
                 </div>
                 <div className="form-group">
                     <label htmlFor="repeatPassword">Repeat Password *</label>
                     <input type="password" className="registration__control"
-                        name="repeatPassword" id="repeatPassword" />
+                        name="repeatPassword" id="repeatPassword" 
+                        onChange={ e => { this.updateRepeatPassword(e.target.value) } } />
+                    { this.state.repeatPassword.touched && (
+                        <ValidationError message={ this.validateRepeatPassword() } />
+                    )}
                 </div>
 
                 <div className="registration__button__group">
                     <button type="reset" className="registration__button">
                         Cancel
                     </button>
-                    <button type="submit" className="registration__button">
+                    <button 
+                        type="submit" 
+                        className="registration__button"
+                        disabled={
+                            this.validateName() ||
+                            this.validatePassword() ||
+                            this.validateRepeatPassword()
+                        }
+                    >
                         Save
                     </button>
                 </div>

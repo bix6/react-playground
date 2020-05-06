@@ -9,7 +9,7 @@ import './index.css';
 // import { BrowserRouter } from "react-router-dom";
 // import App from './paltrows-power-toes/App';
 // import AppLang from './lang-context/AppLang';
-import RegistrationForm from './registrationForm/registrationForm';
+import RegistrationForm from './registrationForm/RegistrationForm';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<HelloWorld />, document.getElementById('root'));
