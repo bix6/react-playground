@@ -9,7 +9,8 @@ import './index.css';
 // import { BrowserRouter } from "react-router-dom";
 // import App from './paltrows-power-toes/App';
 // import AppLang from './lang-context/AppLang';
-import RegistrationForm from './registrationForm/RegistrationForm';
+// import RegistrationForm from './registrationForm/RegistrationForm';
+import App from './playingwithdanger/App';
 
 // ReactDOM.render(<App />, document.getElementById('root'));
 // ReactDOM.render(<HelloWorld />, document.getElementById('root'));
@@ -25,6 +26,6 @@ ReactDOM.render(
 );
 */
 ReactDOM.render(
-    <RegistrationForm />,
+    <App />,
     document.getElementById('root')
 );
